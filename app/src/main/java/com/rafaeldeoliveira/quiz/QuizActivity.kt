@@ -33,14 +33,16 @@ class QuizActivity : AppCompatActivity() {
 
     private fun exibirPergunta() {
         val perguntaAtual = perguntasEmbaralhadas[indicePergunta]
-        binding.apply {
-            tvPergunta.text = perguntaAtual.texto
-            rbOpcao1.text = perguntaAtual.opcoes[0]
-            rbOpcao2.text = perguntaAtual.opcoes[1]
-            rbOpcao3.text = perguntaAtual.opcoes[2]
+        if (indicePergunta >= 0 && indicePergunta < perguntas.size) {
+            binding.apply {
+                tvPergunta.text = perguntaAtual.texto
+                rbOpcao1.text = perguntaAtual.opcoes[0]
+                rbOpcao2.text = perguntaAtual.opcoes[1]
+                rbOpcao3.text = perguntaAtual.opcoes[2]
 
-            // Limpar a seleção anterior do RadioGroup
-            rgOpcoes.clearCheck()
+                // Limpar a seleção anterior do RadioGroup
+                rgOpcoes.clearCheck()
+            }
         }
     }
 
@@ -59,21 +61,30 @@ class QuizActivity : AppCompatActivity() {
         // Verifica se a resposta está correta
         if (indiceSelecionado == perguntasEmbaralhadas[indicePergunta].respostaCorreta) {
             Toast.makeText(this, "Correto!", Toast.LENGTH_SHORT).show()
+            indicePergunta++
+            if (indicePergunta < perguntas.size) {
+                exibirPergunta()
+            } else {
+                // Fim do jogo - encaminhar para a tela de "parabéns"
+                val intent = Intent(this, FimDoJogo::class.java)
+                startActivity(intent)
+            }
         } else {
-            finish()
             Toast.makeText(this, "Resposta incorreta, reiniciando!", Toast.LENGTH_SHORT).show()
+            finish() // Finaliza a atividade apenas em respostas incorretas
         }
 
-        // Atualiza para a próxima pergunta (se houver)
-        indicePergunta++
-        if (indicePergunta < perguntas.size) {
-            exibirPergunta()
-        } else {
-            // Fim do jogo
-//            Toast.makeText(this, "Parabéns! Você terminou o quiz!", Toast.LENGTH_LONG).show()
-//            finish()
-            val intent = Intent(this, FimDoJogo::class.java)
-            startActivity(intent)
-        }
+
+//        // Atualiza para a próxima pergunta (se houver)
+//        indicePergunta++
+//        if (indicePergunta < perguntas.size) {
+//            exibirPergunta()
+//        } else {
+//            // Fim do jogo
+////            Toast.makeText(this, "Parabéns! Você terminou o quiz!", Toast.LENGTH_LONG).show()
+////            finish()
+//            val intent = Intent(this, FimDoJogo::class.java)
+//            startActivity(intent)
+//        }
     }
 }
