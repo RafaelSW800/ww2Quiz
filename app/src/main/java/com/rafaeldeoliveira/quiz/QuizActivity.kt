@@ -62,7 +62,7 @@ class QuizActivity : AppCompatActivity() {
         if (indiceSelecionado == perguntasEmbaralhadas[indicePergunta].respostaCorreta) {
             Toast.makeText(this, "Correto!", Toast.LENGTH_SHORT).show()
             indicePergunta++
-            if (indicePergunta < perguntas.size) {
+            if (indicePergunta < perguntasEmbaralhadas.size) {
                 exibirPergunta()
             } else {
                 // Fim do jogo - encaminhar para a tela de "parabéns"
@@ -72,19 +72,7 @@ class QuizActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Resposta incorreta, reiniciando!", Toast.LENGTH_SHORT).show()
             finish() // Finaliza a atividade apenas em respostas incorretas
+
         }
-
-
-//        // Atualiza para a próxima pergunta (se houver)
-//        indicePergunta++
-//        if (indicePergunta < perguntas.size) {
-//            exibirPergunta()
-//        } else {
-//            // Fim do jogo
-////            Toast.makeText(this, "Parabéns! Você terminou o quiz!", Toast.LENGTH_LONG).show()
-////            finish()
-//            val intent = Intent(this, FimDoJogo::class.java)
-//            startActivity(intent)
-//        }
     }
 }

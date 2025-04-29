@@ -90,3 +90,8 @@ val numeroDePerguntas = 5
 
 // Embaralhar e selecionar apenas uma quantidade específica de perguntas
 val perguntasEmbaralhadas = perguntas.shuffled().take(numeroDePerguntas)
+
+// Function to get a new shuffled list of questions each time it's called
+fun embaralha(): List<Pergunta> {
+    return perguntas.shuffled().take(numeroDePerguntas)
+}

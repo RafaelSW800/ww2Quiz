@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnIniciar = findViewById<Button>(R.id.btnIniciar)
         btnIniciar.setOnClickListener {
-            val intent = Intent(this, FimDoJogo::class.java)
+            val intent = Intent(this, QuizActivity::class.java)
             startActivity(intent)
         }
     }
