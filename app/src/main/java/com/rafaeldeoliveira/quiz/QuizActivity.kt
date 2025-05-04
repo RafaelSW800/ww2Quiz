@@ -6,6 +6,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rafaeldeoliveira.quiz.databinding.ActivityPerguntasBinding
+import kotlin.system.exitProcess
 
 class QuizActivity : AppCompatActivity() {
 
@@ -71,7 +72,8 @@ class QuizActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this, "Resposta incorreta, reiniciando!", Toast.LENGTH_SHORT).show()
-            finish() // Finaliza a atividade apenas em respostas incorretas
+            exitProcess(0)
+            finish()
 
         }
     }

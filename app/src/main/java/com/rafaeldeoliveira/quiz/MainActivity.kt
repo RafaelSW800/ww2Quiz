@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         btnIniciar.setOnClickListener {
             val intent = Intent(this, QuizActivity::class.java)
             startActivity(intent)
+        }
+
+        val btnSair = findViewById<Button>(R.id.btnSair)
+        btnSair.setOnClickListener {
+            finishAffinity() // Encerra todas as atividades
+            exitProcess(0)   // Fecha o aplicativo completamente
         }
     }
 }

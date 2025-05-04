@@ -86,12 +86,12 @@ val perguntas = listOf(
 )
 
 // Definir o número de perguntas que o sistema aleatório vai selecionar
-val numeroDePerguntas = 5
+val numeroDePerguntas = 3
 
 // Embaralhar e selecionar apenas uma quantidade específica de perguntas
 val perguntasEmbaralhadas = perguntas.shuffled().take(numeroDePerguntas)
 
-// Function to get a new shuffled list of questions each time it's called
+//Embaralha as perguntas após o fim do jogo
 fun embaralha(): List<Pergunta> {
     return perguntas.shuffled().take(numeroDePerguntas)
 }

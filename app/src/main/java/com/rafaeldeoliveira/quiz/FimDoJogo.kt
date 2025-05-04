@@ -23,7 +23,9 @@ class FimDoJogo : AppCompatActivity() {
         returnButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            embaralha()
             finish()
         }
     }
 }
+
